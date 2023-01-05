@@ -6,12 +6,11 @@ import numpy as np
 import sys
 import time
 
-"""Cargando y mostrando una imagen"""
+
 
 img_a = data.cat()
 plt.imshow(img_a)
 
-"""Extrayendo los canales R, G y B de una imagen a color"""
 
 canal_r = img_a[:,:,0]
 canal_g = img_a[:,:,1]
@@ -36,13 +35,11 @@ ax[1,1].imshow(canal_b, cmap='gray')
 ax[1,1].set_title('Canal Azul')
 ax[1,1].axis('off')
 
-"""Mi funcion de conversion de imagen RGB a gray"""
 
 def rgb_to_gray(img_rgb):
     img_gray = 0.2989 * img_rgb[:,:,0] + 0.5870 * img_rgb[:,:,1] + 0.1140 * img_rgb[:,:,2]
     return img_gray
 
-"""Comparando funciones de conversion de image RGB a escala de grices"""
 
 # Mi funcion
 img_gray = rgb_to_gray(img_a)
@@ -59,8 +56,6 @@ ax[0].axis('off')
 ax[1].imshow(img_gray2, cmap='gray')
 ax[1].set_title('Funcion OpenCV')
 ax[1].axis('off')
-
-"""Mi funcion de filtrado utilizando un kernel"""
 
 def my_filter(img, kernel):
     rows, cols = img.shape
@@ -92,7 +87,6 @@ if image is None:
 plt.imshow(image, cmap='gray')
 print(image.shape)
 
-"""Utilizando mi filtro de media y el de OpenCV"""
 
 kernel = np.ones((3,3))/9
 # my filtro
@@ -117,7 +111,6 @@ ax[1].imshow(dst_img2, cmap='gray')
 ax[1].set_title('Filter OpenCV')
 ax[1].axis('off')
 
-"""Utilizando mi filtro de gausiano y el de OpenCV"""
 
 kernel = np.array([[1,2,1],[2,4,2],[1,2,1]])/16
 #print(kernel)
@@ -141,14 +134,6 @@ ax[0].axis('off')
 ax[1].imshow(dst_img2, cmap='gray')
 ax[1].set_title('Gausianblur OpenCV')
 ax[1].axis('off')
-
-"""##### Practica: Implementar los filtros no lineales
-* Mínimo: selecciona el valor más pequeño.
-* Máximo: selecciona el valor más alto.
-* Mediana: selecciona el valor en la posición intermedia.
-
-Ojo. Se revisará mañana en la clase.
-"""
 
 def my_medianfilter(img, ksize):
     rows, cols = img.shape
@@ -226,8 +211,6 @@ ax[0].axis('off')
 ax[1].imshow(dst_img2, cmap='gray')
 ax[1].set_title('My filter maximum')
 ax[1].axis('off')
-
-"""Binarización de imagenes"""
 
 def my_threshold(img, vthreshold):
     rows, cols = img.shape
